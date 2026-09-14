@@ -1,3 +1,7 @@
 # Education
 
-Education, certifications and continuing learning will appear here.
+## Bachelor's Degree in Computer Engineering
+
+**Virtual University of the State of São Paulo (UNIVESP)**
+
+2018 – 2024

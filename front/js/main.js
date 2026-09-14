@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
   const languageSelector = document.querySelector("#language-selector");
+  const avatar = document.querySelector(".avatar");
   const markdownCache = new Map();
   const uiCache = new Map();
   let languages = [];
@@ -9,16 +10,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function valueAt(object, path) { return path.split(".").reduce((value, key) => value?.[key], object); }
 
+  function applySiteConfig(config) {
+    if (!config?.avatarUrl || !/^https?:\/\//.test(config.avatarUrl)) return;
+    avatar.src = config.avatarUrl;
+    avatar.alt = config.avatarAlt || "Profile picture";
+    avatar.addEventListener("error", () => { avatar.src = avatar.dataset.fallback; }, { once: true });
+  }
+
+  function isLinkUrl(value) {
+    return typeof value === "string" && /^(https?:\/\/|mailto:|\/(?!\/)|\.\.?\/|assets\/)/.test(value);
+  }
+
+  function createSidebarIcon(kind) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("aria-hidden", "true"); svg.setAttribute("viewBox", "0 0 16 16");
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", kind === "mail" ? "M2.25 3.5h11.5v9H2.25v-9Zm0 .25L8 8.25l5.75-4.5" : kind === "link" ? "M6.5 9.5 9.5 6.5M6 11.75l-1.25 1.25a2.3 2.3 0 1 1-3.25-3.25L4 7.25m6-3 1.25-1.25a2.3 2.3 0 1 1 3.25 3.25L12 8.75" : "m6 4-4 4 4 4m4-8 4 4-4 4");
+    svg.append(path); return svg;
+  }
+
   function renderList(list, items) {
-    const icons = ["◇", "⌁", "☆"];
     list.replaceChildren(...items.map((item, index) => {
       const li = document.createElement("li");
-      const icon = document.createElement("span"); icon.className = "item-icon"; icon.textContent = icons[index % icons.length];
+      const icon = document.createElement("span"); icon.className = "item-icon";
       const label = typeof item === "string" ? item : item.text;
-      if (typeof item === "object" && /^https?:\/\//.test(item.url)) {
+      if (typeof item === "object" && isLinkUrl(item.url)) {
+        const isEmail = item.url.startsWith("mailto:");
+        icon.append(createSidebarIcon(isEmail ? "mail" : "link"));
         const link = document.createElement("a"); link.href = item.url; link.textContent = label;
-        link.target = "_blank"; link.rel = "noreferrer"; li.append(icon, link);
+        if (!isEmail) { link.target = "_blank"; link.rel = "noreferrer"; }
+        li.append(icon, link);
       } else {
+        icon.append(createSidebarIcon("stack"));
         li.append(icon, document.createTextNode(label));
       }
       return li;
@@ -26,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setTextWithLinks(element, text) {
-    const urlPattern = /(https?:\/\/[^\s<>"']+)/g;
+    const urlPattern = /(https?:\/\/[^\s<>"']+|mailto:[^\s<>"']+|\/(?!\/)[^\s<>"']+|\.\.?\/[^\s<>"']+|assets\/[^\s<>"']+)/g;
     let lastIndex = 0;
     element.replaceChildren();
     for (const match of text.matchAll(urlPattern)) {
@@ -37,12 +60,28 @@ document.addEventListener("DOMContentLoaded", () => {
     element.append(document.createTextNode(text.slice(lastIndex)));
   }
 
+  function applyDownload(ui) {
+    const link = document.querySelector("[data-download-link]");
+    const placeholder = document.querySelector("[data-download-placeholder]");
+    const url = ui.sidebar?.download?.status;
+    const available = isLinkUrl(url);
+    link.hidden = !available;
+    placeholder.hidden = available;
+    if (available) {
+      link.href = url;
+    } else {
+      link.removeAttribute("href");
+      placeholder.textContent = url || "";
+    }
+  }
+
   function applyUi(ui, locale) {
     document.documentElement.lang = locale;
     document.querySelectorAll("[data-i18n]").forEach((element) => { setTextWithLinks(element, valueAt(ui, element.dataset.i18n)); });
     document.querySelectorAll("[data-i18n-list]").forEach((element) => { renderList(element, valueAt(ui, element.dataset.i18nList)); });
     languageSelector.setAttribute("aria-label", ui.languageSelectorLabel);
     document.querySelector(".sidebar").setAttribute("aria-label", ui.sidebar.ariaLabel || "Resume details");
+    applyDownload(ui);
   }
 
   async function loadUi(languageId) {
@@ -71,12 +110,32 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         const [, label, href] = token.match(/^\[([^\]]+)\]\(([^\s)]+)\)$/);
         const link = document.createElement("a"); link.textContent = label;
-        if (/^(https?:|mailto:|#|\.\/|\.\.\/)/.test(href)) link.href = href;
+        if (/^(https?:|mailto:|#|\/(?!\/)|\.\/|\.\.\/|assets\/)/.test(href)) link.href = href;
         element.append(link);
       }
       lastIndex = match.index + token.length;
     }
     element.append(document.createTextNode(text.slice(lastIndex)));
+  }
+
+  function createDetails(closedLabel, openLabel, markdown) {
+    const details = document.createElement("details"); details.className = "content-details";
+    const summary = document.createElement("summary");
+    const updateLabel = () => { summary.textContent = details.open ? openLabel : closedLabel; };
+    details.addEventListener("toggle", updateLabel); updateLabel();
+    const content = document.createElement("div"); content.className = "content-details-content";
+    content.append(renderMarkdown(markdown)); details.append(summary, content);
+    return details;
+  }
+
+  function createMetrics(lines) {
+    const metrics = document.createElement("dl"); metrics.className = "project-metrics";
+    lines.filter((line) => line.trim()).forEach((line) => {
+      const match = line.match(/^(.+?)\s*\|\s*(.+)$/); if (!match) return;
+      const item = document.createElement("div"); const value = document.createElement("dt"); const label = document.createElement("dd");
+      appendInline(value, match[1]); appendInline(label, match[2]); item.append(value, label); metrics.append(item);
+    });
+    return metrics;
   }
 
   function renderMarkdown(markdown) {
@@ -86,6 +145,26 @@ document.addEventListener("DOMContentLoaded", () => {
       if (current.startsWith("```")) {
         const codeLines = []; line += 1; while (line < lines.length && !lines[line].startsWith("```")) codeLines.push(lines[line++]); if (line < lines.length) line += 1;
         const pre = document.createElement("pre"); const code = document.createElement("code"); code.textContent = codeLines.join("\n"); pre.append(code); fragment.append(pre); continue;
+      }
+      const details = current.match(/^:::details\s+(.+?)\s*\|\s*(.+)\s*$/);
+      if (details) {
+        const detailLines = []; let nestedDirectiveDepth = 0; line += 1;
+        while (line < lines.length) {
+          const detailLine = lines[line];
+          if (detailLine.trim() === ":::") {
+            if (nestedDirectiveDepth === 0) break;
+            nestedDirectiveDepth -= 1;
+          } else if (/^:::(?:details\b|metrics\s*$)/.test(detailLine)) nestedDirectiveDepth += 1;
+          detailLines.push(detailLine); line += 1;
+        }
+        if (line < lines.length) line += 1;
+        fragment.append(createDetails(details[1], details[2], detailLines.join("\n"))); continue;
+      }
+      if (current.trim() === ":::metrics") {
+        const metricLines = []; line += 1;
+        while (line < lines.length && lines[line].trim() !== ":::") metricLines.push(lines[line++]);
+        if (line < lines.length) line += 1;
+        fragment.append(createMetrics(metricLines)); continue;
       }
       const heading = current.match(/^(#{1,5})\s+(.+)$/);
       if (heading) { const title = document.createElement(`h${Math.min(6, heading[1].length + 1)}`); appendInline(title, heading[2]); fragment.append(title); line += 1; continue; }
@@ -143,6 +222,8 @@ document.addEventListener("DOMContentLoaded", () => {
   (async () => {
     try {
       languages = await fetch("content/languages.json").then((response) => { if (!response.ok) throw new Error("Language catalog unavailable"); return response.json(); });
+      const siteConfig = await fetch("content/site.json").then((response) => response.ok ? response.json() : null).catch(() => null);
+      applySiteConfig(siteConfig);
       languageSelector.replaceChildren(...languages.map((item) => new Option(item.label, item.id)));
       const requestedLanguage = new URLSearchParams(location.search).get("lang");
       languageSelector.value = languages.some((item) => item.id === requestedLanguage) ? requestedLanguage : languages[0].id;

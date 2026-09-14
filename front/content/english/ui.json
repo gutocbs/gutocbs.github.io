@@ -8,11 +8,11 @@
     "links": {
       "title": "Useful links",
       "items": [
-        { "text": "GitHub", "url": "https://github.com/your-username" },
-        { "text": "LinkedIn", "url": "https://www.linkedin.com/in/your-profile" },
-        { "text": "Twitter", "url": "https://twitter.com/your-handle" }
+        { "text": "gutocbsantos@gmail.com", "url": "mailto:gutocbsantos@gmail.com" },
+        { "text": "GitHub", "url": "https://github.com/gutocbs" },
+        { "text": "LinkedIn", "url": "https://www.linkedin.com/in/augustobernardes/" }
       ]
     },
-    "download": { "title": "Resume download", "label": "PDF version", "status": "http://localhost:4173/?lang=portugues#about" }
+    "download": { "title": "Resume download", "label": "PDF version", "status": "assets/resume-english.pdf" }
   }
 }
