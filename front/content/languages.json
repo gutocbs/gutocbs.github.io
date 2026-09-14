@@ -1,0 +1,4 @@
+[
+  { "id": "english", "label": "English", "locale": "en" },
+  { "id": "portugues", "label": "Português", "locale": "pt-BR" }
+]

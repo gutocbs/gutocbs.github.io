@@ -1,0 +1,18 @@
+{
+  "skipToContent": "Pular para o conteúdo",
+  "languageSelectorLabel": "Idioma do site",
+  "tabs": { "about": "Sobre", "experience": "Experiência", "projects": "Projetos", "education": "Formação" },
+  "sidebar": {
+    "ariaLabel": "Detalhes do currículo",
+    "stacks": { "title": "Stacks mais usados", "intro": "Ferramentas que uso para criar softwares confiáveis.", "items": [".NET", "SQL", "MongoDB"] },
+    "links": {
+      "title": "Links úteis",
+      "items": [
+        { "text": "GitHub", "url": "https://github.com/your-username" },
+        { "text": "LinkedIn", "url": "https://www.linkedin.com/in/your-profile" },
+        { "text": "Twitter", "url": "https://twitter.com/your-handle" }
+      ]
+    },
+    "download": { "title": "Baixar currículo", "label": "Versão em PDF", "status": "http://localhost:4173/?lang=portugues#about" }
+  }
+}

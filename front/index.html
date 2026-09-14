@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Augusto Bernardes — Software engineer.">
+    <title>Augusto Bernardes · Software engineer</title>
+    <link rel="icon" href="assets/avatar.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skipToContent">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-identity">
+        <img class="avatar" src="assets/avatar.svg" width="32" height="32" alt="Augusto Bernardes logo">
+        <h1>Augusto Bernardes</h1>
+        <span class="role-badge">Software engineer</span>
+      </div>
+      <label class="language-picker">
+        <span class="visually-hidden" data-i18n="languageSelectorLabel">Website language</span>
+        <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M5.5 3.5a2.5 2.5 0 1 1 5 0v1.75a.75.75 0 0 0 1.5 0V3.5a4 4 0 1 0-8 0v2.25a.75.75 0 0 0 1.5 0V3.5Z M4.25 8.75a.75.75 0 0 0-1.5 0V12a2 2 0 0 0 2 2h.5a.75.75 0 0 0 0-1.5h-.5a.5.5 0 0 1-.5-.5V8.75Zm7.5 0a.75.75 0 0 1 1.5 0V12a.5.5 0 0 1-.5.5h-.5a.75.75 0 0 0 0 1.5h.5a2 2 0 0 0 2-2V8.75ZM8 6.25a.75.75 0 0 0-.75.75v2.25c0 .414.336.75.75.75s.75-.336.75-.75V7A.75.75 0 0 0 8 6.25Z"/></svg>
+        <select id="language-selector" aria-label="Website language"></select>
+      </label>
+    </header>
+
+    <main id="main-content" class="page-layout">
+      <section class="profile-content" aria-label="Resume content">
+        <div class="resume-card">
+          <div class="tab-list" role="tablist" aria-label="Resume sections">
+            <button id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about" data-panel="about">
+              <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M1.75 2.5h4.5c.966 0 1.75.784 1.75 1.75v8.25c0-.69-.56-1.25-1.25-1.25h-5V3.5c0-.552.448-1 1-1ZM14.25 2.5h-4.5A1.75 1.75 0 0 0 8 4.25v8.25c0-.69.56-1.25 1.25-1.25h5V3.5a1 1 0 0 0-1-1Z"/></svg><span data-i18n="tabs.about">About</span>
+            </button>
+            <button id="tab-experience" role="tab" aria-selected="false" aria-controls="panel-experience" data-panel="experience" tabindex="-1">
+              <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M1.75 2.5h4.5c.966 0 1.75.784 1.75 1.75v8.25c0-.69-.56-1.25-1.25-1.25h-5V3.5c0-.552.448-1 1-1ZM14.25 2.5h-4.5A1.75 1.75 0 0 0 8 4.25v8.25c0-.69.56-1.25 1.25-1.25h5V3.5a1 1 0 0 0-1-1Z"/></svg><span data-i18n="tabs.experience">Experience</span>
+            </button>
+            <button id="tab-projects" role="tab" aria-selected="false" aria-controls="panel-projects" data-panel="projects" tabindex="-1">
+              <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M1.75 2.5h4.5c.966 0 1.75.784 1.75 1.75v8.25c0-.69-.56-1.25-1.25-1.25h-5V3.5c0-.552.448-1 1-1ZM14.25 2.5h-4.5A1.75 1.75 0 0 0 8 4.25v8.25c0-.69.56-1.25 1.25-1.25h5V3.5a1 1 0 0 0-1-1Z"/></svg><span data-i18n="tabs.projects">Projects</span>
+            </button>
+            <button id="tab-education" role="tab" aria-selected="false" aria-controls="panel-education" data-panel="education" tabindex="-1">
+              <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M1.75 2.5h4.5c.966 0 1.75.784 1.75 1.75v8.25c0-.69-.56-1.25-1.25-1.25h-5V3.5c0-.552.448-1 1-1ZM14.25 2.5h-4.5A1.75 1.75 0 0 0 8 4.25v8.25c0-.69.56-1.25 1.25-1.25h5V3.5a1 1 0 0 0-1-1Z"/></svg><span data-i18n="tabs.education">Education</span>
+            </button>
+          </div>
+          <div class="panel-wrap">
+            <section id="panel-about" role="tabpanel" aria-labelledby="tab-about" data-document="About.md" aria-busy="true"><p class="muted">Loading content…</p></section>
+            <section id="panel-experience" role="tabpanel" aria-labelledby="tab-experience" data-document="Experience.md" aria-busy="true" hidden><p class="muted">Loading content…</p></section>
+            <section id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" data-document="Projects.md" aria-busy="true" hidden><p class="muted">Loading content…</p></section>
+            <section id="panel-education" role="tabpanel" aria-labelledby="tab-education" data-document="Education.md" aria-busy="true" hidden><p class="muted">Loading content…</p></section>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar" aria-label="Resume details">
+        <section class="sidebar-section"><h2 data-i18n="sidebar.stacks.title">Most used stacks</h2><p class="sidebar-intro" data-i18n="sidebar.stacks.intro">Tools I use to build dependable software.</p><ul data-i18n-list="sidebar.stacks.items"></ul></section>
+        <section class="sidebar-section"><h2 data-i18n="sidebar.links.title">Useful links</h2><ul data-i18n-list="sidebar.links.items"></ul></section>
+        <section class="sidebar-section download"><h2 data-i18n="sidebar.download.title">Resume download</h2><p data-i18n="sidebar.download.label">PDF version</p><span class="download-placeholder" data-i18n="sidebar.download.status">Available soon</span></section>
+      </aside>
+    </main>
+  </body>
+</html>

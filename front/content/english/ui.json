@@ -1,0 +1,18 @@
+{
+  "skipToContent": "Skip to content",
+  "languageSelectorLabel": "Website language",
+  "tabs": { "about": "About", "experience": "Experience", "projects": "Projects", "education": "Education" },
+  "sidebar": {
+    "ariaLabel": "Resume details",
+    "stacks": { "title": "Most used stacks", "intro": "Tools I use to build dependable software.", "items": [".NET", "SQL", "MongoDB"] },
+    "links": {
+      "title": "Useful links",
+      "items": [
+        { "text": "GitHub", "url": "https://github.com/your-username" },
+        { "text": "LinkedIn", "url": "https://www.linkedin.com/in/your-profile" },
+        { "text": "Twitter", "url": "https://twitter.com/your-handle" }
+      ]
+    },
+    "download": { "title": "Resume download", "label": "PDF version", "status": "http://localhost:4173/?lang=portugues#about" }
+  }
+}
