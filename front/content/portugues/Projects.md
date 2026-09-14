@@ -58,7 +58,7 @@ Aplicação desktop para gerenciamento de uma biblioteca local de animes, com **
 `C++` `Qt` `AniList API`
 
 :::details Ver detalhes | Ocultar detalhes
-O projeto é uma reescrita do meu antigo **AtomAnime**, criada para estudar **C++, Qt e arquitetura de aplicações** enquanto eu evoluía uma ferramenta que já utilizava.
+O projeto é uma reescrita do meu antigo **AtomAnime**, criado para estudar **C++, Qt e arquitetura de aplicações** enquanto eu evoluía uma ferramenta que já utilizava.
 
 Embora seja um projeto mais antigo e eu hoje tomasse decisões arquiteturais diferentes, ele representa uma parte importante da minha evolução como desenvolvedor e do meu interesse por construir ferramentas para resolver problemas pessoais.
 :::
