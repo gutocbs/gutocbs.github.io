@@ -53,6 +53,7 @@ option { color: var(--text-primary); background: var(--container-background); }
 [role="tabpanel"] h2 { margin-bottom: 12px; color: var(--text-primary); font-size: 20px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
 [role="tabpanel"] h3, [role="tabpanel"] h4 { margin: 28px 0 8px; color: var(--text-primary); font-size: 16px; font-weight: 600; line-height: 1.45; }
 #panel-experience h3:not(:first-of-type), #panel-projects h3:not(:first-of-type) { padding-top: 32px; margin-top: 40px; border-top: 1px solid var(--border-color); }
+#panel-projects h3 a { margin-left: 2px; color: var(--link-color); font-size: 13px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
 #panel-education h3 { margin-bottom: 6px; }
 #panel-education h3 + p { margin-bottom: 2px; }
 #panel-education h3 + p strong { color: var(--text-primary); font-weight: 600; }

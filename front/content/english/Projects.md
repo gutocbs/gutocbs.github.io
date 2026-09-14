@@ -2,7 +2,7 @@
 
 Personal projects built to solve everyday problems, experiment with technologies, and explore different approaches to software architecture and development.
 
-## Wiki Parser
+## Wiki Parser · [Repository](https://github.com/gutocbs/wikiaparser)
 
 A parser that transforms large wiki XML dumps into **structured, strongly typed JSON data**, initially built to process data from the Genshin Impact Wiki.
 
@@ -21,7 +21,7 @@ The main challenge was reducing the cost of processing large volumes of data. Th
 :::
 :::
 
-## Playnite Integration
+## Playnite Integration · [Repository](https://github.com/gutocbs/Playnite-Integration)
 
 A plugin for **Playnite** that integrates external tools used primarily to run visual novels.
 
@@ -37,7 +37,7 @@ The project originated from PowerShell scripts that automated tools such as **Lo
 I'm restructuring the solution in **C# and .NET** to bring these integrations into a single, extensible layer between Playnite and external launchers.
 :::
 
-## Google Tasks Command Palette
+## Google Tasks Command Palette · [Repository](https://github.com/gutocbs/GoogleTasksCommandPalette)
 
 An extension that integrates **Google Tasks with Windows Command Palette**, allowing tasks to be accessed and managed without interrupting the workflow to open a separate application.
 
@@ -53,7 +53,7 @@ The extension allows users to **view, create, and edit tasks and task lists dire
 The project grew out of a personal need and an opportunity to explore extension development within the Windows ecosystem and integrations with external services.
 :::
 
-## HaikenAnime
+## HaikenAnime · [Repository](https://github.com/gutocbs/HaikenAnime)
 
 A desktop application for managing a local anime library, with **automatic detection of the currently playing episode and AniList progress updates**.
 

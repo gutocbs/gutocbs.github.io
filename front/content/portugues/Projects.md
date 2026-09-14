@@ -2,8 +2,7 @@
 
 Projetos pessoais para resolver problemas do meu dia a dia, experimentar tecnologias e explorar diferentes abordagens de arquitetura e desenvolvimento.
 
-## Wiki Parser
-
+## Wiki Parser · [Repositório](https://github.com/gutocbs/wikiaparser)
 Parser para transformar grandes dumps XML de wikis em **dados JSON estruturados e tipados**, criado inicialmente para processar dados da wiki de Genshin Impact.
 
 ### Tecnologias
@@ -21,8 +20,7 @@ O principal desafio foi reduzir o custo de processar grandes volumes de dados. A
 :::
 :::
 
-## Playnite Integration
-
+## Playnite Integration · [Repositório](https://github.com/gutocbs/Playnite-Integration)
 Plugin para o **Playnite** que integra ferramentas externas usadas principalmente na execução de visual novels.
 
 **Status:** Em desenvolvimento
@@ -37,8 +35,7 @@ O projeto surgiu de scripts PowerShell que automatizavam ferramentas como **Loca
 Estou reestruturando a solução em **C# e .NET** para concentrar as integrações em uma camada única e extensível entre o Playnite e os launchers externos.
 :::
 
-## Google Tasks Command Palette
-
+## Google Tasks Command Palette · [Repositório](https://github.com/gutocbs/GoogleTasksCommandPalette)
 Extensão que integra o **Google Tasks ao Windows Command Palette**, permitindo acessar tarefas sem interromper o fluxo de trabalho para abrir outra aplicação.
 
 **Status:** Em desenvolvimento
@@ -53,8 +50,7 @@ A extensão permite **visualizar, criar e editar tarefas e listas diretamente pe
 O projeto nasceu de uma necessidade pessoal e da oportunidade de explorar desenvolvimento de extensões para o ecossistema do Windows e integrações com serviços externos.
 :::
 
-## HaikenAnime
-
+## HaikenAnime · [Repositório](https://github.com/gutocbs/HaikenAnime)
 Aplicação desktop para gerenciamento de uma biblioteca local de animes, com **detecção automática do episódio em reprodução e atualização do progresso no AniList**.
 
 ### Tecnologias
