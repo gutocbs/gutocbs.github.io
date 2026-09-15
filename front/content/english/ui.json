@@ -4,7 +4,7 @@
   "tabs": { "about": "About", "experience": "Experience", "projects": "Projects", "education": "Education" },
   "sidebar": {
     "ariaLabel": "Resume details",
-    "stacks": { "title": "Most used stacks", "intro": "Tools I use to build dependable software.", "items": [".NET", "SQL", "MongoDB"] },
+    "stacks": { "title": "Most used stacks", "intro": "Tools I am the most confortable with.", "items": [".NET", "SQL", "MongoDB"] },
     "links": {
       "title": "Useful links",
       "items": [

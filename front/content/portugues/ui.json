@@ -4,7 +4,7 @@
   "tabs": { "about": "Sobre", "experience": "Experiência", "projects": "Projetos", "education": "Formação" },
   "sidebar": {
     "ariaLabel": "Detalhes do currículo",
-    "stacks": { "title": "Stacks mais usados", "intro": "Ferramentas que uso para criar softwares confiáveis.", "items": [".NET", "SQL", "MongoDB"] },
+    "stacks": { "title": "Stacks mais utilizadas", "intro": "Ferramentas com que tenho maior familiaridade.", "items": [".NET", "SQL", "MongoDB"] },
     "links": {
       "title": "Links úteis",
       "items": [
