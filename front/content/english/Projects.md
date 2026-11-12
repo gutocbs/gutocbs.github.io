@@ -45,7 +45,7 @@ An extension that integrates **Google Tasks with Windows Command Palette**, allo
 
 ### Technologies
 
-`C#` `.NET` `Google Tasks API` `Windows Command Palette`
+`C#` `.NET` `Google API` `Windows Command Palette`
 
 :::details View details | Hide details
 The extension allows users to **view, create, and edit tasks and task lists directly from Command Palette** using the Google Tasks API.
@@ -59,7 +59,7 @@ A desktop application for managing a local anime library, with **automatic detec
 
 ### Technologies
 
-`C++` `Qt` `AniList API`
+`C++` `Qt` `GraphQL`
 
 :::details View details | Hide details
 The project is a rewrite of my older **AtomAnime** application, created as a way to study **C++, Qt, and application architecture** while improving a tool I was already using.

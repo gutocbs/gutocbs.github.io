@@ -42,7 +42,7 @@ Extensão que integra o **Google Tasks ao Windows Command Palette**, permitindo 
 
 ### Tecnologias
 
-`C#` `.NET` `Google Tasks API` `Windows Command Palette`
+`C#` `.NET` `Google API` `Windows Command Palette`
 
 :::details Ver detalhes | Ocultar detalhes
 A extensão permite **visualizar, criar e editar tarefas e listas diretamente pela Command Palette**, usando a API do Google Tasks.
@@ -55,7 +55,7 @@ Aplicação desktop para gerenciamento de uma biblioteca local de animes, com **
 
 ### Tecnologias
 
-`C++` `Qt` `AniList API`
+`C++` `Qt` `GraphQL`
 
 :::details Ver detalhes | Ocultar detalhes
 O projeto é uma reescrita do meu antigo **AtomAnime**, criado para estudar **C++, Qt e arquitetura de aplicações** enquanto eu evoluía uma ferramenta que já utilizava.
